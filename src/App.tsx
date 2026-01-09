@@ -6,11 +6,16 @@ import 'bulma/css/bulma.css';
 import './App.scss';
 import { SortType } from './types/SortType';
 
+type SortRevers = {
+  sortField: string;
+  isReversed: boolean;
+};
+
 export const App = () => {
-  const [sortField, setSortField] = useState('');
+  const [sortField, setSortField] = useState<SortType | ''>('');
   const [isReversed, setReversed] = useState(false);
 
-  const handleClick = (sortType: string) => {
+  const handleClick = (sortType: SortType) => {
     switch (sortType) {
       case SortType.SortAlphabetically:
       case SortType.SortByLength:
@@ -28,11 +33,6 @@ export const App = () => {
     }
   };
 
-  type SortRevers = {
-    sortField: string;
-    isReversed: boolean;
-  };
-
   function prepareGoods(
     initialGoods: string[],
     { sortField: field, isReversed: reversed }: SortRevers,
@@ -41,9 +41,9 @@ export const App = () => {
 
     copyGgoods.sort((goodA, goodB) => {
       switch (field) {
-        case 'Sort alphabetically':
+        case SortType.SortAlphabetically:
           return goodA.localeCompare(goodB);
-        case 'Sort by length':
+        case SortType.SortByLength:
           return goodA.length - goodB.length;
         default:
           return 0;

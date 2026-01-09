@@ -1,11 +1,13 @@
 import React from 'react';
+import { SortType } from '../../types/SortType';
+import { ClassNameButton } from '../../types/ClassNameButton';
 
 type Props = {
-  className: string;
+  className: ClassNameButton;
   isReversed: boolean;
-  nameField: string;
-  sortField: string;
-  handleClick: (nameField: string) => void;
+  nameField: SortType;
+  sortField: SortType | '';
+  handleClick: (nameField: SortType) => void;
 };
 
 export const Button: React.FC<Props> = ({
@@ -15,13 +17,28 @@ export const Button: React.FC<Props> = ({
   sortField,
   handleClick,
 }) => {
-  let classNameButton;
+  let classNameButton: ClassNameButton;
 
-  if (isReversed && nameField === 'Reverse') {
+  function toLightVariant(nameClass: ClassNameButton): ClassNameButton {
+    switch (nameClass) {
+      case ClassNameButton.Info:
+        return ClassNameButton.InfoLight;
+      case ClassNameButton.Success:
+        return ClassNameButton.SuccessLight;
+      case ClassNameButton.Warning:
+        return ClassNameButton.WarningLight;
+      case ClassNameButton.Danger:
+        return ClassNameButton.DangerLight;
+      default:
+        return nameClass;
+    }
+  }
+
+  if (isReversed && nameField === SortType.Reverse) {
     classNameButton = className;
   } else {
     classNameButton =
-      sortField === nameField ? className : `${className} is-light`;
+      sortField === nameField ? className : toLightVariant(className);
   }
 
   return (

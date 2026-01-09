@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from '../button/Button';
+import { ClassNameButton } from '../../types/ClassNameButton';
+import { SortType } from '../../types/SortType';
 
 type Props = {
-  buttonClassesFields: string[][];
-  sortField: string;
-  handleClick: (nameField: string) => void;
+  buttonClassesFields: [ClassNameButton, SortType][];
+  sortField: SortType | '';
+  handleClick: (nameField: SortType) => void;
   isReversed: boolean;
 };
 

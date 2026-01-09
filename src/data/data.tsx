@@ -1,3 +1,6 @@
+import { SortType } from '../types/SortType';
+import { ClassNameButton } from '../types/ClassNameButton';
+
 export const goodsFromServer = [
   'Dumplings',
   'Carrot',
@@ -11,9 +14,9 @@ export const goodsFromServer = [
   'Garlic',
 ];
 
-export const buttonClassesFields = [
-  ['button is-info', 'Sort alphabetically'],
-  ['button is-success', 'Sort by length'],
-  ['button is-warning', 'Reverse'],
-  ['button is-danger', 'Reset'],
+export const buttonClassesFields: [ClassNameButton, SortType][] = [
+  [ClassNameButton.Info, SortType.SortAlphabetically],
+  [ClassNameButton.Success, SortType.SortByLength],
+  [ClassNameButton.Warning, SortType.Reverse],
+  [ClassNameButton.Danger, SortType.Reset],
 ];
