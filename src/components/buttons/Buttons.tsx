@@ -18,7 +18,7 @@ export const Buttons: React.FC<Props> = ({
 }) => (
   <div className="buttons">
     {buttonClassesFields.map(([className, nameField]) => {
-      if (!sortField && !isReversed && nameField === 'Reset') {
+      if (!sortField && !isReversed && nameField === SortType.Reset) {
         return null;
       }
 

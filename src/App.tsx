@@ -7,7 +7,7 @@ import './App.scss';
 import { SortType } from './types/SortType';
 
 type SortRevers = {
-  sortField: string;
+  sortField: SortType | '';
   isReversed: boolean;
 };
 
